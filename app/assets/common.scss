@@ -1,0 +1,64 @@
+// This file is imported in the common chunk
+@import "rizzo-next/sass/core";
+
+// Specific override for Guides app banner
+.branch-banner-is-active {
+  margin-top: 0 !important; // override inline
+  padding-top: 7.6rem;
+}
+
+.content-wrapper {
+  position: relative;
+}
+
+// Wraps all content below the masthead
+.page-container {
+  position: relative;
+  z-index: 5;
+  background-color: #fff;
+  transition: .3s opacity ease-in;
+  outline: 0;
+
+  .no-js &,
+  &--ready {
+    opacity: 1;
+  }
+}
+
+// @TODO move to reset
+// h1, h2, h3, h4, h5, h6 {
+//   a {
+//     @include link-transition;
+//     color: currentColor;
+
+//     &:hover,
+//     &:active,
+//     &:focus {
+//       color: $color-blue;
+//     }
+//   }
+// }
+
+.clearfix {
+  @include clearfix;
+}
+
+// -----------------------------------------------------------------------------
+// Fix some CSS issues present with Rizzo Next components
+// -----------------------------------------------------------------------------
+
+// Compensates for missing autoprefixer in Rizzo Next build
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+// Height of footer logo is not constrained
+.lp-global-footer .lp-logo {
+  height: 47px;
+}
+
+// Social button icons aren't centered vertically
+.lp-global-footer__social-link .svg-icon {
+  top: 11px !important;
+}

@@ -1,0 +1,153 @@
+// Dependencies
+// -----------------------------------------------------------------------------
+
+@import "rizzo-next/sass/webpack_deps";
+
+@mixin poi-container() {
+  @include container;
+
+  @media (max-width: $max-768) {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+
+
+
+
+// Page
+// -----------------------------------------------------------------------------
+
+.PageContainer {
+  @include container;
+
+  @media (min-width: $min-768) and (max-width: $max-1080) {
+    margin-left: gutter(static);
+    margin-right: gutter(static);
+  }
+
+  @media (min-width: $min-1080) and (max-width: $max-1410) {
+    margin-left: (gutter(static) * 2);
+    margin-right: (gutter(static) * 2);
+  }
+}
+
+.Page {
+  @include container;
+
+  @media (min-width: $min-600) {
+    margin-top: 7.8rem;
+  }
+}
+
+.PageHeader {
+  @include poi-container;
+  margin-bottom: 3.9rem;
+
+  @media (max-width: $max-600) {
+    margin-top: 4.9rem;
+  }
+
+  @media (min-width: $min-600) {
+    margin-bottom: 6.3rem;
+  }
+}
+
+.PageContent {
+  @include clearfix;
+}
+
+.PageArticle {
+  @media (max-width: $max-768) {
+    margin-bottom: span(1);
+  }
+
+  @media (min-width: $min-768) {
+    float: right;
+    margin-right: span(1);
+    width: (span(7) + gutter());
+  }
+
+  &-content {
+    @include poi-container;
+  }
+}
+
+.Page--detail .PageArticle {
+  @media (min-width: $min-1200) {
+    margin-left: span(1);
+    margin-right: span(1);
+    width: (span(7) + gutter() + gutter());
+  }
+
+  @media (min-width: $min-1410) {
+    margin-left: (span(1) + gutter());
+    margin-right: span(1);
+    width: (span(7) + gutter());
+  }
+
+  &-content {
+    $container-small: strip-units(span(7 static) + gutter(static)) * 10;
+    $container-medium: strip-units(span(7 static) + gutter(static) + gutter(static)) * 10;
+    $container-large: strip-units(span(7 static) + gutter(static)) * 10;
+    $width: strip-units(span(6 static)) * 10;
+    $margin-left: strip-units(span(1 static) + gutter(static)) * 10;
+
+    @media (min-width: $min-1200) {
+      margin-left: percentage($margin-left / $container-medium);
+      margin-right: gutter();
+      width: percentage($width / $container-medium);
+    }
+
+    @media (min-width: $min-1410) {
+      margin-left: percentage($margin-left / $container-large);
+      width: percentage($width / $container-large);
+    }
+  }
+}
+
+.Page--list .PageArticle {
+  @media (min-width: $min-1200) {
+    margin-right: span(1);
+    width: (span(8) + gutter());
+  }
+
+  @media (min-width: $min-1410) {
+    margin-right: (span(1) + gutter());
+    width: span(8);
+  }
+}
+
+.PageAside {
+  @media (max-width: $max-768) {
+    border-top: .1rem solid $color-gray;
+    padding-top: 4rem;
+  }
+
+  @media (min-width: $min-768) {
+    float: right;
+    width: (span(4) + gutter());
+  }
+
+  @media (min-width: $min-1200) {
+    width: (span(3) + gutter());
+  }
+
+  @media (min-width: $min-1410) {
+    margin-left: gutter();
+    width: span(3);
+  }
+
+  .ImageCarousel + & {
+    @media (max-width: $max-768) {
+      border-top: 0
+    }
+  }
+}
+
+.PageFooter {
+  @include poi-container;
+  margin-bottom: 11rem;
+  margin-top: 15rem;
+}

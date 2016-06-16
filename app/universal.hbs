@@ -1,0 +1,12 @@
+{{#extend "javascript"}}
+  <script>
+    window.__initialState = {{{__initialState}}}
+  </script>
+  {{{asset "universal.js"}}}
+{{/extend}}
+
+{{#extend "css"}}
+  {{{asset "universal.css"}}}
+{{/extend}}
+
+<div id="app">{{{markup}}}</div>

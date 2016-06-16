@@ -1,0 +1,61 @@
+{{!-- From Destinations/app/templates/layouts/partials/doctype --}}
+{{> "layouts/partials/doctype" }}
+<head>
+  {{> "layouts/partials/meta"}}
+  {{{block "meta"}}}
+
+  {{!-- Built from webpack --}}
+  {{{asset "common.css"}}}
+
+  {{{block "css"}}}
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
+
+  {{!-- From Bane/app/templates/layouts/partials/lp_js --}}
+  {{> "layouts/partials/lp_js_common" }}
+
+  {{{block "ad_config"}}}
+
+  <script src="https://assets.staticlp.com/javascripts/modernizr-custom.5d7da729d195a4a6.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+  <script>
+    WebFont.load({
+      custom: {
+        families: ['Benton Sans:n3,n5,n6', 'Miller Daily:n4,i4']
+      }
+    });
+  </script>
+</head>
+<body class="js-body body" data-template-name="{{template_name}}">
+  {{> "components/svg_icons/svg_icons" }}
+
+  {{> "layouts/partials/tealium"}}
+
+  <a class="skip-link" href="#main" tabindex="1">
+    Skip to Content
+  </a>
+
+  <div class="content-wrapper navigation-wrapper">
+    {{#if show_header}}
+    {{> "components/header/header" header}}
+    {{/if}}
+
+    {{!-- From app/templates/route --}}
+    <section class="page-container page-container--ready" id="main" role="main" tabindex="0">
+      {{{ body }}}
+    </section>
+  </div>
+
+  {{> "components/footer/footer" footer}}
+
+  {{> "layouts/partials/analytics" }}
+  {{{asset "common.js"}}}
+
+  {{! "layouts/partials/nativo"}}
+
+  {{{block "javascript"}}}
+
+  {{{dev_server}}}
+</body>
+</html>

@@ -1,0 +1,7 @@
+web:
+  build: .
+  ports:
+    - "3000:3000"
+  command: bash -c "npm start"
+  volumes:
+    - .:/code

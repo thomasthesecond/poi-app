@@ -1,0 +1,26 @@
+// Dependencies
+// -----------------------------------------------------------------------------
+
+@import "rizzo-next/sass/webpack_deps";
+
+.PageContainer {
+  @include container;
+
+  @media (min-width: $min-768) and (max-width: $max-1080) {
+    margin-left: gutter(static);
+    margin-right: gutter(static);
+  }
+
+  @media (min-width: $min-1080) and (max-width: $max-1410) {
+    margin-left: (gutter(static) * 2);
+    margin-right: (gutter(static) * 2);
+  }
+}
+
+.Page {
+  @include container;
+
+  @media (min-width: $min-600) {
+    margin-top: 7.8rem;
+  }
+}

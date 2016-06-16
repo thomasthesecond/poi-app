@@ -1,0 +1,7 @@
+@import "rizzo-next/sass/webpack_deps";
+
+.HomeComponent {
+  @include container;
+  margin-bottom: 11rem;
+  margin-top: 7.8rem;
+}

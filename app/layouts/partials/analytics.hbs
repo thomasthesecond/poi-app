@@ -1,0 +1,9 @@
+<script type="text/javascript">
+  (function(d,t,c){
+    var filepath = d.cookie.match(/lpDev/) ? "analytics.dev.js?" +c.getTime() : "analytics.min.js",
+        g=d.createElement(t),
+        s=d.getElementsByTagName(t)[0];
+    g.src="//assets.staticlp.com/analytics/" + filepath;
+    s.parentNode.insertBefore(g,s);
+  }(document,"script",new Date));
+</script>
