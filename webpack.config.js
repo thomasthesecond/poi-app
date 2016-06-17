@@ -55,6 +55,7 @@ module.exports = {
     common: ["webpack-hot-middleware/client", "assets/common"],
     universal: "assets/universal",
     home: "assets/home",
+    add: "assets/add",
   },
   output: {
     path: path.join(__dirname, "public", "assets"),

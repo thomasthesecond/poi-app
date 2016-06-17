@@ -1,6 +1,61 @@
 // This file is imported in the common chunk
 @import "rizzo-next/sass/core";
 
+#step-1 {
+  overflow: hidden;
+
+  button {
+    display: block;
+    width: 50%;
+    // height: calc(33vh - 59px);
+    height: 27.9vh;
+    float: left;
+  }
+}
+
+.HomeComponent {
+  text-align: center;
+
+  ul {
+    text-align: left;
+  }
+
+  li {
+    border-top: 1px solid #e9edf0;
+    padding: 14px 20px 12px;
+  }
+
+  .title {
+    color: #2c3643;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.7;
+  }
+
+  .location {
+    color: hsla(215,5%,56%,.5);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .02rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.PageContainer {
+  @include container;
+  // margin-bottom: 11rem;
+  // margin-top: 7.8rem;
+
+  // @media (max-width: $min-768) {
+  //   padding-left: 20px;
+  //   padding-right: 20px;
+  // }
+}
+
 // Specific override for Guides app banner
 .branch-banner-is-active {
   margin-top: 0 !important; // override inline

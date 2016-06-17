@@ -2,6 +2,7 @@
 
 import AppComponent from "../../app";
 import HomeComponent from "../../home/home";
+import AddComponent from "../../add/add";
 import UniversalComponent from "../../universal/components/universal";
 
 const routes = {
@@ -13,6 +14,9 @@ const routes = {
   }, {
     path: "/universal",
     component: UniversalComponent,
+  }, {
+    path: "/add",
+    component: AddComponent,
   }],
 };
 
