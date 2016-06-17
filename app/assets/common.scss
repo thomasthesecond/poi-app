@@ -1,6 +1,14 @@
 // This file is imported in the common chunk
 @import "rizzo-next/sass/core";
 
+.PhotoPreview {
+  img {
+    display: block;
+    height: 100%;
+    width: auto;
+  }
+}
+
 #step-1 {
   overflow: hidden;
 
@@ -47,6 +55,7 @@
 
 .PageContainer {
   @include container;
+  overflow: hidden;
   // margin-bottom: 11rem;
   // margin-top: 7.8rem;
 

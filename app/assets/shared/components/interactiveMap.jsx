@@ -394,6 +394,8 @@ class InteractiveMap extends React.Component {
     this.leafletMap = leaflet.map(id, {
       scrollWheelZoom: false,
       zoomControl: !hideZoomControls,
+      dragging: false,
+      tap: false,
     }).setView(center, zoom);
   }
 

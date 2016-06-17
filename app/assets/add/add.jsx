@@ -36,6 +36,8 @@ export class AddComponent extends React.Component {
       state: "",
     };
 
+    this.photoOnChange = this.photoOnChange.bind(this);
+
     this.displayPosition = this.displayPosition.bind(this);
     this.displayError = this.displayError.bind(this);
     this.saveCategory = this.saveCategory.bind(this);
@@ -66,6 +68,8 @@ export class AddComponent extends React.Component {
 
     this.formData = new FormData();
 
+    this.reader = new FileReader();
+
     $.ajax({
       url: "https://lp-pois.herokuapp.com/pois",
       dataType: "json",
@@ -79,6 +83,28 @@ export class AddComponent extends React.Component {
         // console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+  }
+
+  photoOnChange(e, id) {
+    const file = e.currentTarget.files[0];
+    const imageType = /image.*/;
+
+    console.log(this.refs);
+
+    if (file.type.match(imageType)) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        ReactDOM.findDOMNode(this.refs[`${id}-preview`]).innerHTML = "";
+
+        let img = new Image();
+        img.src = reader.result;
+
+        ReactDOM.findDOMNode(this.refs[`${id}-preview`]).appendChild(img);
+      }
+
+      reader.readAsDataURL(file);
+    }
   }
 
   displayPosition(position) {
@@ -132,8 +158,6 @@ export class AddComponent extends React.Component {
 
   saveInformation(e) {
     e.preventDefault();
-
-    console.log(ReactDOM.findDOMNode(this.refs.name).value);
 
     this.setState({
       name: ReactDOM.findDOMNode(this.refs.name).value,
@@ -359,7 +383,7 @@ export class AddComponent extends React.Component {
               </div>
               <br />
               <input type="text" placeholder="Place name" ref="name"
-                defaultValue={ this.state.name }
+                defaultValue={this.state.name}
                 required
                 style={{
                   fontSize: "40px",
@@ -371,6 +395,7 @@ export class AddComponent extends React.Component {
                   display: "block",
                   outline: "none",
                   width: "100%",
+                  appearance: "none",
                 }} />
               <br />
               {this.state.renderMap &&
@@ -385,7 +410,7 @@ export class AddComponent extends React.Component {
               }
               <br />
               <textarea type="text" placeholder="Address" ref="address"
-                defaultValue={ this.state.address } required
+                defaultValue={this.state.address} required
                 style={{
                   fontSize: "16px",
                   textAlign: "center",
@@ -396,6 +421,7 @@ export class AddComponent extends React.Component {
                   outline: "none",
                   width: "100%",
                   resize: "none",
+                  appearance: "none",
                 }}></textarea>
               <br />
 
@@ -404,6 +430,8 @@ export class AddComponent extends React.Component {
                 fontSize: "14px",
                 textTransform: "uppercase",
                 fontWeight: 600,
+                borderTop: "1px solid #ebecee",
+                paddingTop: "40px",
               }}>Photos</div><br />
 
               <div>
@@ -417,7 +445,30 @@ export class AddComponent extends React.Component {
                   fontWeight: 600,
                   paddingTop: "5px",
                   margin: "0 20px",
-                }}>+</div>
+                  position: "relative",
+                }}>+<input ref="photo-1-input" type="file" accept="image/*;capture=camera"
+                onChange={(e) => {
+                  this.photoOnChange(e, "photo-1");
+                }}
+                style={{
+                  width: "100%",
+                  display: "block",
+                  height: "100%",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  opacity: 0,
+                  zIndex: 2,
+                }} /><div className="PhotoPreview" ref="photo-1-preview" style={{
+                  width: "100%",
+                  display: "block",
+                  height: "100%",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  zIndex: 1,
+                }}></div></div>
+
                 <div style={{
                   display: "inline-block",
                   width: "calc(100vw / 3 - 30px)",
@@ -427,7 +478,30 @@ export class AddComponent extends React.Component {
                   fontSize: "60px",
                   fontWeight: 600,
                   paddingTop: "5px",
-                }}>+</div>
+                  position: "relative",
+                }}>+<input ref="photo-2-input" type="file" accept="image/*;capture=camera"
+                onChange={(e) => {
+                  this.photoOnChange(e, "photo-2");
+                }}
+                style={{
+                  width: "100%",
+                  display: "block",
+                  height: "100%",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  opacity: 0,
+                  zIndex: 2,
+                }} /><div className="PhotoPreview" ref="photo-2-preview" style={{
+                  width: "100%",
+                  display: "block",
+                  height: "100%",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  zIndex: 1,
+                }}></div></div>
+
                 <div style={{
                   display: "inline-block",
                   width: "calc(100vw / 3 - 30px)",
@@ -438,15 +512,62 @@ export class AddComponent extends React.Component {
                   fontWeight: 600,
                   paddingTop: "5px",
                   margin: "0 20px",
-                }}>+</div>
+                  position: "relative",
+                }}>+<input ref="photo-3-input" type="file" accept="image/*;capture=camera"
+                onChange={(e) => {
+                  this.photoOnChange(e, "photo-3");
+                }}
+                style={{
+                  width: "100%",
+                  display: "block",
+                  height: "100%",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  opacity: 0,
+                  zIndex: 2,
+                }} /><div className="PhotoPreview" ref="photo-3-preview" style={{
+                  width: "100%",
+                  display: "block",
+                  height: "100%",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  zIndex: 1,
+                }}></div></div>
               </div>
 
               <br /><br />
 
-              <input type="text" placeholder="Tips" ref="tips"
-                defaultValue={ this.state.tips } />
+              <div style={{
+                color: "#b2c3cd",
+                fontSize: "14px",
+                textTransform: "uppercase",
+                fontWeight: 600,
+                borderTop: "1px solid #ebecee",
+                paddingTop: "40px",
+              }}>Travel Tips</div><br />
+
+              <div style={{
+                borderBottom: "1px solid #ebecee",
+                // margin: "0 20px",
+              }}>
+                <input type="text" placeholder="Add a tip" ref="tips"
+                  defaultValue={this.state.tips} style={{
+                    display: "block",
+                    width: "100%",
+                    fontSize: "16px",
+                    textAlign: "center",
+                    padding: "0 20px",
+                    border: 0,
+                    outline: 0,
+                    appearance: "none",
+                  }} />
+                  <br /><br />
+              </div>
               <br />
-              <input type="file" accept="image/*;capture=camera"
+              <br />
+              <input hidden type="file" accept="image/*;capture=camera"
                 onChange={(e) => {
                   e.preventDefault();
                   const files = e.currentTarget.files;

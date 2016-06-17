@@ -56,6 +56,7 @@ module.exports = {
     universal: "assets/universal",
     home: "assets/home",
     add: "assets/add",
+    poi: "assets/poi",
   },
   output: {
     path: path.join(__dirname, "public", "assets"),

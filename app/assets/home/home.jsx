@@ -36,12 +36,17 @@ class HomeComponent extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     this.items = nextState.data.map((item, index) => (
       <li key={index}>
-        <div className="title">{item.name}</div>
-        {item.city && item.state &&
-          <div className="location">
-            {item.city}, {item.state}
-          </div>
-        }
+        <Link
+          to={`/poi/${item.id}`}
+          key={index}
+        >
+          <div className="title">{item.name}</div>
+          {item.city && item.state &&
+            <div className="location">
+              {item.city}, {item.state}
+            </div>
+          }
+        </Link>
       </li>
     ));
 
